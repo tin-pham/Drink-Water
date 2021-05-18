@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;1,200&display=swap');
+
+$trans: 300ms ease-in-out;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+}
+
+body {
+  background: #129cce;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 2rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+.glass {
+  border: 3px solid #247ba0;
+  border-radius: 0 0 50px 50px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  color: #129cce;
+  position: relative;
+  &--big {
+    margin: 0 auto;
+    width: 300px;
+    height: 400px;
+    overflow: hidden;
+    transition: $trans;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    // Manipulate this with JS
+    --water-taken: 0px;
+
+    .remain,
+    .remain-container {
+      color: #247ba0;
+    }
+
+    .remain-container {
+      z-index: 1;
+      margin: auto;
+      height: calc(400px - var(--water-taken));
+      // height: 400px;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      transition: $trans;
+    }
+
+    .fill {
+      position: relative;
+      width: 100%;
+      height: var(--water-taken);
+      background: #8bcae5;
+      bottom: 0;
+      transition: $trans;
+      font-size: 3rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+  }
+
+  &--small {
+    width: 75px;
+    height: 150px;
+    cursor: pointer;
+    transition: $trans;
+    &.active {
+      background: #129cce;
+      color: white;
+      transition: $trans;
+    }
+  }
+}
+
+.glass-grid {
+  display: grid;
+  width: 500px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  margin: 0 auto;
+  gap: 1rem;
+}
